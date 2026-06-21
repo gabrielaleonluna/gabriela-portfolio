@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabriela León — Social Media & Marketing Strategist</title>
+  <meta name="description" content="Social Communicator & Digital Marketing Specialist. Social media management, copywriting, CRM automation & content strategy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #18130F;
+      --bg2:      #221A14;
+      --bg3:      #2E2018;
+      --cream:    #F2EAE0;
+      --muted:    #A89880;
+      --gold:     #C9A46E;
+      --white:    #FDFAF7;
+      --border:   rgba(201,164,110,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 6vw;
+      background: rgba(24,19,15,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--gold); letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-cta {
+      background: var(--gold); color: var(--bg) !important;
+      padding: 0.5rem 1.2rem; border-radius: 100px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--cream); color: var(--bg) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--cream); border-radius: 2px; transition: all 0.3s; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; padding: 7rem 6vw 4rem;
+      gap: 4rem;
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(201,164,110,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-label {
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-label::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.02; font-weight: 900;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+    .hero-title em {
+      font-style: italic; color: var(--gold);
+    }
+    .hero-sub {
+      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+      color: var(--muted); max-width: 480px;
+      margin: 1.5rem 0 2.5rem;
+      line-height: 1.75;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--bg);
+      padding: 0.85rem 2rem; border-radius: 100px;
+      text-decoration: none; font-weight: 600; font-size: 0.9rem;
+      letter-spacing: 0.02em; transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-primary:hover { background: var(--cream); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1px solid var(--border); color: var(--cream);
+      padding: 0.85rem 2rem; border-radius: 100px;
+      text-decoration: none; font-weight: 400; font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-badges {
+      display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2.5rem;
+    }
+    .badge {
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: 0.35rem 1rem; font-size: 0.78rem; color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .hero-img-wrap {
+      position: relative; display: flex; justify-content: center;
+    }
+    .hero-img-frame {
+      width: 380px; max-width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 24px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .hero-img-frame img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-img-placeholder {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0.5rem; color: var(--muted); font-size: 0.85rem;
+    }
+    .hero-img-placeholder svg { width: 48px; height: 48px; opacity: 0.4; }
+    .hero-stat-card {
+      position: absolute; bottom: -1rem; left: -2rem;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1rem 1.25rem;
+      backdrop-filter: blur(8px);
+    }
+    .hero-stat-card .number {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 700; color: var(--gold); line-height: 1;
+    }
+    .hero-stat-card .label { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
+    .hero-stat-card2 {
+      position: absolute; top: 1.5rem; right: -1.5rem;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 16px; padding: 0.85rem 1.1rem;
+    }
+    .hero-stat-card2 .lang { font-size: 0.78rem; color: var(--muted); }
+    .hero-stat-card2 .langs { font-size: 0.9rem; font-weight: 600; color: var(--cream); margin-top: 0.15rem; }
+
+    /* ── SECTION COMMONS ── */
+    section { padding: 6rem 6vw; }
+    .section-label {
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1; color: var(--white);
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .divider { width: 100%; height: 1px; background: var(--border); }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg2); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: center; margin-top: 3.5rem; }
+    .about-img-wrap { position: relative; }
+    .about-img-frame {
+      width: 100%; aspect-ratio: 4/5; border-radius: 20px;
+      background: var(--bg3); border: 1px solid var(--border);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-img-frame img { width: 100%; height: 100%; object-fit: cover; }
+    .about-accent {
+      position: absolute; top: -1rem; right: -1rem;
+      width: 80px; height: 80px; border-radius: 50%;
+      border: 1px solid var(--border); background: var(--bg3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold);
+    }
+    .about-text p {
+      color: var(--muted); line-height: 1.85; margin-bottom: 1.25rem;
+      font-size: 1.02rem;
+    }
+    .about-text p strong { color: var(--cream); }
+    .about-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
+    .tag {
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: 0.4rem 1.1rem; font-size: 0.8rem;
+      color: var(--cream); letter-spacing: 0.02em;
+      background: var(--bg3);
+    }
+    .about-lang-row { display: flex; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
+    .lang-chip {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.83rem; color: var(--muted);
+    }
+    .lang-chip .flag { font-size: 1.1rem; }
+    .lang-chip .level { color: var(--gold); font-weight: 600; }
+
+    /* ── SERVICES ── */
+    #services {}
+    .services-intro { max-width: 640px; margin-bottom: 3.5rem; }
+    .services-intro p { color: var(--muted); font-size: 1rem; margin-top: 1rem; line-height: 1.75; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .service-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2rem;
+      transition: all 0.25s;
+    }
+    .service-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .service-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--bg3); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1.25rem;
+    }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; color: var(--white); margin-bottom: 0.75rem;
+    }
+    .service-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; margin-bottom: 1.25rem; }
+    .service-list { list-style: none; }
+    .service-list li {
+      font-size: 0.82rem; color: var(--muted);
+      padding: 0.3rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .service-list li::before { content: '→'; color: var(--gold); font-size: 0.75rem; }
+    .service-list li:last-child { border-bottom: none; }
+
+    /* ── HOW IT WORKS ── */
+    #how { background: var(--bg2); }
+    .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3.5rem; }
+    .how-step {
+      padding: 2rem; border-radius: 20px;
+      background: var(--bg3); border: 1px solid var(--border);
+      position: relative;
+    }
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem; font-weight: 900; color: var(--border);
+      line-height: 1; margin-bottom: 1rem;
+      position: absolute; top: 1.5rem; right: 1.75rem;
+    }
+    .how-step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; color: var(--white); margin-bottom: 0.75rem;
+    }
+    .how-step p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+
+    /* ── EXPERIENCE ── */
+    #experience {}
+    .exp-intro { max-width: 540px; margin-bottom: 3.5rem; }
+    .exp-list { display: flex; flex-direction: column; gap: 1.5rem; max-width: 800px; }
+    .exp-item {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 18px; padding: 1.75rem 2rem;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 1rem; align-items: start;
+      transition: border-color 0.2s;
+    }
+    .exp-item:hover { border-color: var(--gold); }
+    .exp-role {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: var(--white); margin-bottom: 0.25rem;
+    }
+    .exp-company { color: var(--gold); font-size: 0.85rem; font-weight: 500; margin-bottom: 0.75rem; }
+    .exp-desc { color: var(--muted); font-size: 0.86rem; line-height: 1.7; }
+    .exp-period {
+      font-size: 0.78rem; color: var(--muted);
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: 0.3rem 0.9rem; white-space: nowrap; height: fit-content;
+    }
+
+    /* ── TOOLS ── */
+    #tools { background: var(--bg2); }
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .tool-group {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 18px; padding: 1.5rem;
+    }
+    .tool-group-label {
+      font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .tool-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tool-chip {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 100px; padding: 0.35rem 0.9rem;
+      font-size: 0.8rem; color: var(--cream);
+    }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials {}
+    .testi-intro { margin-bottom: 3.5rem; }
+    .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .testi-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2rem;
+    }
+    .testi-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; color: var(--gold); line-height: 1; margin-bottom: 1rem;
+    }
+    .testi-text {
+      color: var(--muted); font-size: 0.9rem; line-height: 1.75;
+      margin-bottom: 1.5rem; font-style: italic;
+    }
+    .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+    .testi-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--bg3); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .testi-name { font-size: 0.88rem; font-weight: 600; color: var(--cream); }
+    .testi-role-label { font-size: 0.78rem; color: var(--muted); }
+    .testi-placeholder {
+      border: 2px dashed var(--border); border-radius: 20px;
+      padding: 2rem; text-align: center; color: var(--muted);
+      font-size: 0.85rem;
+    }
+    .testi-placeholder p { margin-top: 0.5rem; font-size: 0.78rem; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg2); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 3.5rem; align-items: start; }
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; color: var(--white); margin-bottom: 1rem;
+    }
+    .contact-info p { color: var(--muted); font-size: 0.9rem; line-height: 1.75; margin-bottom: 2rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.75rem;
+      text-decoration: none; color: var(--cream);
+      font-size: 0.9rem; transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--gold); }
+    .contact-link-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: var(--bg3); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    form { display: flex; flex-direction: column; gap: 1rem; }
+    form label { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.2rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    form input, form textarea, form select {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 12px; padding: 0.85rem 1rem;
+      color: var(--cream); font-family: 'Inter', sans-serif; font-size: 0.9rem;
+      outline: none; transition: border-color 0.2s; width: 100%;
+    }
+    form input:focus, form textarea:focus { border-color: var(--gold); }
+    form input::placeholder, form textarea::placeholder { color: var(--muted); }
+    form textarea { resize: vertical; min-height: 120px; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .btn-submit {
+      background: var(--gold); color: var(--bg);
+      border: none; border-radius: 100px; padding: 0.9rem 2rem;
+      font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem;
+      cursor: pointer; transition: all 0.2s; margin-top: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+    .btn-submit:hover { background: var(--cream); transform: translateY(-2px); }
+    #form-status { font-size: 0.85rem; text-align: center; padding: 0.5rem; border-radius: 8px; display: none; }
+    #form-status.success { background: rgba(201,164,110,0.15); color: var(--gold); }
+    #form-status.error { background: rgba(220,50,50,0.1); color: #e88; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2.5rem 6vw;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    footer .copy { color: var(--muted); font-size: 0.8rem; }
+    footer .footer-links { display: flex; gap: 1.5rem; }
+    footer .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+    footer .footer-links a:hover { color: var(--gold); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      #hero { grid-template-columns: 1fr; padding-top: 6rem; gap: 2.5rem; }
+      .hero-img-wrap { order: -1; }
+      .hero-img-frame { width: 260px; margin: 0 auto; }
+      .hero-stat-card { left: 0; bottom: -0.5rem; }
+      .hero-stat-card2 { right: 0; top: 1rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .how-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--bg2); padding: 1.5rem 6vw; border-bottom: 1px solid var(--border); gap: 1.25rem; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 4rem 5vw; }
+      .exp-item { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; }
+      .btn-primary, .btn-outline { text-align: center; justify-content: center; }
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Gabriela León</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#contact" class="nav-cta">Work with me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-label">Social Communicator &amp; Marketing Strategist</div>
+    <h1 class="hero-title">
+      Gabriela<br/>
+      <em>León.</em>
+    </h1>
+    <p class="hero-sub">
+      I help brands grow their digital presence through strategic content, community management, and data-driven marketing — in English and Spanish.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Let's work together →</a>
+      <a href="#services" class="btn-outline">View services</a>
+    </div>
+    <div class="hero-badges">
+      <span class="badge">Social Media</span>
+      <span class="badge">Copywriting</span>
+      <span class="badge">CRM & Automation</span>
+      <span class="badge">Content Strategy</span>
+    </div>
+  </div>
+  <div class="hero-img-wrap">
+    <div class="hero-img-frame" id="heroFrame">
+      <!-- Replace with: <img src="your-photo.jpg" alt="Gabriela León" /> -->
+      <div class="hero-img-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <span>Add your photo</span>
+      </div>
+    </div>
+    <div class="hero-stat-card">
+      <div class="number">3+</div>
+      <div class="label">Years of experience</div>
+    </div>
+    <div class="hero-stat-card2">
+      <div class="lang">Languages</div>
+      <div class="langs">EN · ES · FR</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Who I am</div>
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <div class="about-img-frame" id="aboutFrame">
+        <!-- Replace with: <img src="your-about-photo.jpg" alt="Gabriela León" /> -->
+        <div class="hero-img-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:40px;height:40px;opacity:0.3"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+      </div>
+      <div class="about-accent">G</div>
+    </div>
+    <div class="about-text reveal">
+      <h2 class="section-title" style="margin-bottom:1.5rem;">
+        Turning ideas into<br/><em>real results</em>
+      </h2>
+      <p>
+        I'm Gabriela, a <strong>Social Communicator</strong> from Barranquilla, Colombia, with hands-on experience managing digital marketing for clients in the education, insurance, and tech sectors — primarily in the U.S. market.
+      </p>
+      <p>
+        With a <strong>C2 level of English</strong>, I bridge the gap between Latin American talent and English-speaking brands, delivering content that feels native, strategic, and results-oriented.
+      </p>
+      <p>
+        From building CRM workflows in GoHighLevel to crafting scroll-stopping social media content, I bring both the creative and analytical sides of marketing together to help brands grow meaningfully.
+      </p>
+      <div class="about-tags">
+        <span class="tag">Bilingualism</span>
+        <span class="tag">Critical thinking</span>
+        <span class="tag">Content creation</span>
+        <span class="tag">Research</span>
+        <span class="tag">Oral communication</span>
+        <span class="tag">Innovation</span>
+      </div>
+      <div class="about-lang-row">
+        <div class="lang-chip"><span class="flag">🇺🇸</span> English <span class="level">C2</span></div>
+        <div class="lang-chip"><span class="flag">🇨🇴</span> Spanish <span class="level">Native</span></div>
+        <div class="lang-chip"><span class="flag">🇫🇷</span> French <span class="level">B1</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-intro reveal">
+    <div class="section-label">What I offer</div>
+    <h2 class="section-title">Services built to<br/><em>move the needle</em></h2>
+    <p>Strategic marketing support tailored to your brand's voice, audience, and goals — so you can focus on what you do best.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">📱</div>
+      <h3>Social Media Management</h3>
+      <p>Full-cycle management of your social channels — from strategy and content creation to scheduling, engagement, and performance analysis.</p>
+      <ul class="service-list">
+        <li>Instagram, Facebook, TikTok, LinkedIn, YouTube</li>
+        <li>Content calendar & scheduling</li>
+        <li>Community engagement</li>
+        <li>Monthly performance reports</li>
+      </ul>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">✍️</div>
+      <h3>Copywriting & Content Strategy</h3>
+      <p>Words that connect, convert, and stay true to your brand voice — across social media, blogs, emails, and landing pages.</p>
+      <ul class="service-list">
+        <li>Social media captions &amp; scripts</li>
+        <li>Blog &amp; website copy</li>
+        <li>Email marketing sequences</li>
+        <li>Brand tone &amp; voice guide</li>
+      </ul>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">⚙️</div>
+      <h3>CRM & Marketing Automation</h3>
+      <p>Streamline your lead management and follow-up processes with smart automation — so no opportunity falls through the cracks.</p>
+      <ul class="service-list">
+        <li>GoHighLevel (GHL) setup &amp; management</li>
+        <li>Lead tracking &amp; nurturing flows</li>
+        <li>RSVP &amp; event automation</li>
+        <li>Digital forms &amp; pipelines</li>
+      </ul>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📊</div>
+      <h3>Marketing Strategy & Consulting</h3>
+      <p>Data-informed marketing strategy that aligns with your business goals, audience insights, and growth targets.</p>
+      <ul class="service-list">
+        <li>Audience &amp; competitor analysis</li>
+        <li>Campaign planning &amp; execution</li>
+        <li>KPI tracking &amp; optimization</li>
+        <li>Weekly strategic sessions</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="reveal">
+    <div class="section-label">Process</div>
+    <h2 class="section-title">How we work<br/><em>together</em></h2>
+  </div>
+  <div class="how-grid">
+    <div class="how-step reveal">
+      <div class="step-num">01</div>
+      <h3>Discovery Call</h3>
+      <p>We start with a free 30-minute call to understand your brand, your goals, your audience, and where you want to be. No obligations, just clarity.</p>
+    </div>
+    <div class="how-step reveal">
+      <div class="step-num">02</div>
+      <h3>Strategy & Creative Direction</h3>
+      <p>I develop a tailored marketing plan — content pillars, calendar, tone, channels, and KPIs — aligned with your brand identity and business objectives.</p>
+    </div>
+    <div class="how-step reveal">
+      <div class="step-num">03</div>
+      <h3>Execution & Delivery</h3>
+      <p>I execute the strategy, deliver content on time, track performance, and report results. You stay informed without being overwhelmed.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="exp-intro reveal">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">Where I've<br/><em>made an impact</em></h2>
+  </div>
+  <div class="exp-list">
+    <div class="exp-item reveal">
+      <div>
+        <div class="exp-role">Professional Administrator — Marketing & Accounts</div>
+        <div class="exp-company">Montessori Thrive / Freelance</div>
+        <div class="exp-desc">
+          Managed a portfolio of three Montessori school clients, leading weekly strategy sessions to evaluate campaign performance, service quality, and brand alignment. Oversaw full digital marketing operations including CRM setup (GoHighLevel), lead tracking, and key metrics analysis. Designed automated workflows for RSVPs, follow-ups, and digital forms, and coordinated cross-departmental teams to drive consistent client results.
+        </div>
+      </div>
+      <span class="exp-period">Sep 2025 – Present</span>
+    </div>
+    <div class="exp-item reveal">
+      <div>
+        <div class="exp-role">Community Manager</div>
+        <div class="exp-company">Stay Blessed Insurance / Freelance</div>
+        <div class="exp-desc">
+          Managed multi-platform social media presence (Instagram, Facebook, TikTok, YouTube, LinkedIn) for a U.S.-based insurance company. Created strategic content focused on informing and engaging an American audience — handling copywriting, graphic design, and video editing. Monitored analytics, tracked trends, and adjusted strategy to optimize reach and engagement.
+        </div>
+      </div>
+      <span class="exp-period">Jan – May 2025</span>
+    </div>
+    <div class="exp-item reveal">
+      <div>
+        <div class="exp-role">Creative Copywriter</div>
+        <div class="exp-company">Proyecto Abblo</div>
+        <div class="exp-desc">
+          Designed strategic digital content for social media, blogs, and the company website, aligning with the institutional voice and connecting with the target audience. Collaborated closely with the marketing team to maintain coherent, timely communication that responded to audience interests and needs.
+        </div>
+      </div>
+      <span class="exp-period">Jun – Nov 2024</span>
+    </div>
+    <div class="exp-item reveal">
+      <div>
+        <div class="exp-role">Logistics Coordinator</div>
+        <div class="exp-company">Lean Solutions</div>
+        <div class="exp-desc">
+          Managed daily communication with U.S.-based clients, resolving requests and concerns with empathy and efficiency. Coordinated international billing and shipping processes, and served as the first point of contact in urgent situations — demonstrating strong client orientation and responsiveness.
+        </div>
+      </div>
+      <span class="exp-period">Nov 2022 – Jun 2024</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="reveal">
+    <div class="section-label">Tech & Tools</div>
+    <h2 class="section-title">My <em>toolkit</em></h2>
+  </div>
+  <div class="tools-grid">
+    <div class="tool-group reveal">
+      <div class="tool-group-label">Marketing & Ads</div>
+      <div class="tool-chips">
+        <span class="tool-chip">Meta Business Suite</span>
+        <span class="tool-chip">Mailchimp</span>
+      </div>
+    </div>
+    <div class="tool-group reveal">
+      <div class="tool-group-label">Content & Design</div>
+      <div class="tool-chips">
+        <span class="tool-chip">Canva</span>
+        <span class="tool-chip">Filmora</span>
+        <span class="tool-chip">CapCut</span>
+        <span class="tool-chip">Reaper</span>
+        <span class="tool-chip">Spline</span>
+      </div>
+    </div>
+    <div class="tool-group reveal">
+      <div class="tool-group-label">CRM & Project Management</div>
+      <div class="tool-chips">
+        <span class="tool-chip">GoHighLevel</span>
+        <span class="tool-chip">Trello</span>
+        <span class="tool-chip">Monday</span>
+        <span class="tool-chip">ClickUp</span>
+      </div>
+    </div>
+    <div class="tool-group reveal">
+      <div class="tool-group-label">Channels</div>
+      <div class="tool-chips">
+        <span class="tool-chip">Instagram</span>
+        <span class="tool-chip">TikTok</span>
+        <span class="tool-chip">LinkedIn</span>
+        <span class="tool-chip">Facebook</span>
+        <span class="tool-chip">YouTube</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testi-intro reveal">
+    <div class="section-label">Testimonials</div>
+    <h2 class="section-title">What clients<br/><em>say</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-placeholder reveal">
+      <div style="font-size:2rem; margin-bottom:0.5rem;">⭐</div>
+      <strong style="color:var(--cream);">Add a testimonial</strong>
+      <p>Share client feedback here to build trust with potential clients.</p>
+    </div>
+    <div class="testi-placeholder reveal">
+      <div style="font-size:2rem; margin-bottom:0.5rem;">⭐</div>
+      <strong style="color:var(--cream);">Add a testimonial</strong>
+      <p>Share client feedback here to build trust with potential clients.</p>
+    </div>
+    <div class="testi-placeholder reveal">
+      <div style="font-size:2rem; margin-bottom:0.5rem;">⭐</div>
+      <strong style="color:var(--cream);">Add a testimonial</strong>
+      <p>Share client feedback here to build trust with potential clients.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <div class="section-label">Let's connect</div>
+    <h2 class="section-title">Ready to grow<br/><em>your brand?</em></h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h3>Let's talk about your project</h3>
+      <p>Whether you need a full social media strategy, a copywriting refresh, or CRM automation — I'd love to hear about your goals and explore how we can work together.</p>
+      <div class="contact-links">
+        <a href="mailto:gabrielaleon1130@gmail.com" class="contact-link">
+          <div class="contact-link-icon">✉️</div>
+          gabrielaleon1130@gmail.com
+        </a>
+        <a href="tel:+573053374001" class="contact-link">
+          <div class="contact-link-icon">📞</div>
+          (+57) 305 337 4001
+        </a>
+        <a href="https://instagram.com/gabrielaleon_luna" target="_blank" rel="noopener" class="contact-link">
+          <div class="contact-link-icon">📸</div>
+          @gabrielaleon_luna
+        </a>
+        <a href="https://linkedin.com/in/gabriela-leon-luna" target="_blank" rel="noopener" class="contact-link">
+          <div class="contact-link-icon">💼</div>
+          LinkedIn Profile
+        </a>
+      </div>
+    </div>
+    <form id="contactForm" class="reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="service">Service of interest</label>
+        <select id="service" name="service">
+          <option value="">Select a service...</option>
+          <option>Social Media Management</option>
+          <option>Copywriting & Content Strategy</option>
+          <option>CRM & Marketing Automation</option>
+          <option>Marketing Strategy & Consulting</option>
+          <option>Other / Let's talk</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Tell me about your brand and goals..." required></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Send message →</button>
+      <div id="form-status"></div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="copy">© 2026 Gabriela León Luna · Barranquilla, Colombia</span>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+    <a href="mailto:gabrielaleon1130@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Contact form — Formspree
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('form-status');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    status.style.display = 'none';
+    const btn = form.querySelector('.btn-submit');
+    btn.textContent = 'Sending...'; btn.disabled = true;
+    const data = Object.fromEntries(new FormData(form));
+    try {
+      // Replace YOUR_FORM_ID with your Formspree form ID (e.g. "xpwzokjn")
+      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (res.ok) {
+        status.textContent = '✓ Message sent! I'll be in touch soon.';
+        status.className = 'success'; status.style.display = 'block';
+        form.reset();
+      } else { throw new Error(); }
+    } catch {
+      status.textContent = 'Something went wrong. Please email me directly.';
+      status.className = 'error'; status.style.display = 'block';
+    }
+    btn.textContent = 'Send message →'; btn.disabled = false;
+  });
+</script>
+</body>
+</html>
