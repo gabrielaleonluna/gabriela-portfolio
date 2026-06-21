@@ -300,17 +300,8 @@
 
     /* ── ABOUT ── */
     #about { background: var(--grad); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: center; }
-    .about-photo {
-      border-radius: 24px 24px 24px 80px;
-      overflow: hidden; aspect-ratio: 4/5;
-      background: linear-gradient(160deg, #e8e4ff, #d4c5ff);
-      box-shadow: 0 20px 50px rgba(108,92,231,0.15);
-      transition: box-shadow 0.3s, transform 0.3s;
-    }
-    .about-photo:hover { transform: translateY(-4px); box-shadow: 0 28px 60px rgba(108,92,231,0.2); }
-    .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
-    .about-text .about-p { color: var(--body); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; }
+    .about-inner { max-width: 820px; margin: 0 auto; }
+    .about-text .about-p { color: var(--body); font-size: 1.05rem; line-height: 1.85; margin-bottom: 1rem; }
     .about-text .about-p strong { color: var(--ink); font-weight: 600; }
     .about-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.8rem; }
     .chip {
@@ -320,6 +311,13 @@
       transition: all 0.2s; cursor: default;
     }
     .chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+    .about-langs { display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
+    .about-lang {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.88rem; color: var(--muted);
+    }
+    .about-lang .lvl { color: var(--accent); font-weight: 600; font-size: 0.78rem;
+      background: var(--card); padding: 0.15rem 0.6rem; border-radius: 100px; }
 
     /* ── SERVICES ── */
     #services { background: var(--white); }
@@ -357,31 +355,22 @@
 
     /* ── HOW ── */
     #how { background: var(--grad); }
-    .how-inner { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: center; }
-    .how-steps { display: flex; flex-direction: column; gap: 1.5rem; }
+    .how-header { max-width: 520px; margin-bottom: 3rem; }
+    .how-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     .how-step {
-      display: flex; gap: 1.25rem; align-items: flex-start;
-      background: var(--white); border-radius: 16px; padding: 1.5rem;
-      border: 1px solid var(--border);
-      transition: all 0.25s;
+      background: var(--white); border-radius: 20px; padding: 2rem;
+      border: 1px solid var(--border); transition: all 0.25s;
     }
-    .how-step:hover { border-color: var(--accent2); transform: translateX(6px); box-shadow: 0 6px 20px rgba(108,92,231,0.08); }
+    .how-step:hover { border-color: var(--accent2); transform: translateY(-5px); box-shadow: 0 12px 32px rgba(108,92,231,0.1); }
     .step-badge {
-      min-width: 36px; height: 36px; border-radius: 10px;
+      width: 40px; height: 40px; border-radius: 12px;
       background: var(--card); display: flex; align-items: center;
-      justify-content: center; font-weight: 600; color: var(--accent);
-      font-size: 0.82rem; letter-spacing: 0.04em; flex-shrink: 0;
+      justify-content: center; font-weight: 700; color: var(--accent);
+      font-size: 0.85rem; letter-spacing: 0.04em; margin-bottom: 1.2rem;
     }
-    .how-step h3 { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 0.3rem; }
-    .how-step p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
-    .how-visual {
-      border-radius: 24px; overflow: hidden; aspect-ratio: 4/5;
-      background: linear-gradient(160deg, #d8d0ff, #c4b5fd);
-      box-shadow: 0 20px 50px rgba(108,92,231,0.15);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .how-visual:hover { transform: translateY(-4px); box-shadow: 0 28px 60px rgba(108,92,231,0.2); }
-    .how-visual img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    .how-step h3 { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--ink); margin-bottom: 0.6rem; }
+    .how-step p { font-size: 0.87rem; color: var(--muted); line-height: 1.7; }
+    @media (max-width: 700px) { .how-cols { grid-template-columns: 1fr; } }
 
     /* ── EXPERIENCE ── */
     #experience { background: var(--white); }
@@ -578,14 +567,13 @@
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="about-grid">
-    <div class="about-photo" data-reveal="left">
-      <img src="photo-about.jpg" alt="Gabriela León in studio" onerror="this.style.display='none'" />
-    </div>
-    <div class="about-text" data-reveal="right">
+  <div class="about-inner">
+    <div data-reveal="up">
       <div class="s-label">About me</div>
       <h2>I make brands<br/><em>feel human.</em></h2>
-      <p class="about-p" style="margin-top:1.2rem;">
+    </div>
+    <div class="about-text" data-reveal="up" data-delay="1" style="margin-top:1.5rem;">
+      <p class="about-p">
         I'm a <strong>Social Communicator</strong> from Barranquilla, Colombia — and I've spent the last three years building digital marketing strategies for brands in the U.S. market.
       </p>
       <p class="about-p">
@@ -602,6 +590,11 @@
         <span class="chip">Research</span>
         <span class="chip">CRM automation</span>
         <span class="chip">Community building</span>
+      </div>
+      <div class="about-langs">
+        <span class="about-lang">🇺🇸 English <span class="lvl">C2</span></span>
+        <span class="about-lang">🇨🇴 Spanish <span class="lvl">Native</span></span>
+        <span class="about-lang">🇫🇷 French <span class="lvl">B1</span></span>
       </div>
     </div>
   </div>
@@ -666,36 +659,25 @@
 
 <!-- HOW IT WORKS -->
 <section id="how">
-  <div class="how-inner">
-    <div>
-      <div class="s-label" data-reveal="up">Process</div>
-      <h2 style="margin-bottom:2rem;" data-reveal="up" data-delay="1">Simple process,<br/><em>real results.</em></h2>
-      <div class="how-steps">
-        <div class="how-step" data-reveal="left" data-delay="1">
-          <div class="step-badge">01</div>
-          <div>
-            <h3>Discovery Call</h3>
-            <p>We talk for 30 minutes — free, no commitment. I want to understand your brand, your audience, and what's holding your growth back.</p>
-          </div>
-        </div>
-        <div class="how-step" data-reveal="left" data-delay="2">
-          <div class="step-badge">02</div>
-          <div>
-            <h3>Strategy & Creative Direction</h3>
-            <p>I build a tailored plan: content pillars, calendar, tone of voice, channels, and clear KPIs. Everything aligned with your business goals.</p>
-          </div>
-        </div>
-        <div class="how-step" data-reveal="left" data-delay="3">
-          <div class="step-badge">03</div>
-          <div>
-            <h3>Execution & Reporting</h3>
-            <p>I deliver, post, track, and report. You stay in the loop without getting buried in the details. Results you can see, every month.</p>
-          </div>
-        </div>
-      </div>
+  <div class="how-header" data-reveal="up">
+    <div class="s-label">Process</div>
+    <h2>Simple process,<br/><em>real results.</em></h2>
+  </div>
+  <div class="how-cols">
+    <div class="how-step" data-reveal="up" data-delay="1">
+      <div class="step-badge">01</div>
+      <h3>Discovery Call</h3>
+      <p>We talk for 30 minutes — free, no commitment. I want to understand your brand, your audience, and what's holding your growth back.</p>
     </div>
-    <div class="how-visual" data-reveal="right">
-      <img src="photo-about.jpg" alt="Gabriela León at work" onerror="this.style.display='none'" />
+    <div class="how-step" data-reveal="up" data-delay="2">
+      <div class="step-badge">02</div>
+      <h3>Strategy & Creative Direction</h3>
+      <p>I build a tailored plan: content pillars, calendar, tone of voice, channels, and clear KPIs. Everything aligned with your business goals.</p>
+    </div>
+    <div class="how-step" data-reveal="up" data-delay="3">
+      <div class="step-badge">03</div>
+      <h3>Execution & Reporting</h3>
+      <p>I deliver, post, track, and report. You stay in the loop without getting buried in the details. Results you can see, every month.</p>
     </div>
   </div>
 </section>
